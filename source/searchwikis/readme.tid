@@ -1,5 +1,5 @@
 created: 20200303065501532
-modified: 20200303191041271
+modified: 20200303193702947
 title: $:/plugins/kookma/searchwikis/readme
 type: text/vnd.tiddlywiki
 
@@ -10,7 +10,7 @@ Searchwikis plugin uses index (dataTiddler) to search external Tiddlywikis. It h
 # An indexer, to build an index of all tiddlers in external wiki
 # A search tool to search indexes and display a link to external wiki
 
-Then one centeral wiki can hosts many index tiddlers and lets to search several external wikis through index tiddlers.
+Then one central wiki can hosts many index tiddlers and lets to search several external wikis through index tiddlers.
 <<<
 
 
@@ -32,7 +32,7 @@ Then one centeral wiki can hosts many index tiddlers and lets to search several 
 #Save and reload your wiki
 
 ;Client-Server installation (separate files)
-*For Node.js (server version) download the shiraz folder from [[source|https://github.com/kookma/TW-Searchwikis]] folder and paste in your Tiddlywiki plugins folder
+*For Node.js (server version) download the searchwikis folder from [[source|https://github.com/kookma/TW-Searchwikis]] folder and paste in your Tiddlywiki plugins folder
 *For local installation put the searchwikis folder into your local plugins folder under your wiki folder
 
 ;Code and demo
