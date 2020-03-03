@@ -1,0 +1,15 @@
+created: 20200303065501531
+modified: 20200303190853006
+title: $:/plugins/kookma/searchwikis/history
+type: text/vnd.tiddlywiki
+
+!! Revision 1.0.0
+* Date: [3rd Mar 2020]
+* [NEW] new index and search mechanism
+* [NEW] search multiple indexes at the same time
+* [NEW] added interface to $:/AdvancedSearch
+* [NEW] added documentation and examples
+
+!! Revision 0.5
+* Date: [1st Feb 2020]
+* First release on kookma.searchwikis.tiddlyspot.com

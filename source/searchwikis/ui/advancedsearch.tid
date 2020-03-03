@@ -1,0 +1,29 @@
+caption: External wikis
+created: 20200303134648969
+modified: 20200303163120455
+tags: $:/tags/AdvancedSearch
+title: $:/plugins/kookma/searchwikis/ui/advancedsearch
+type: text/vnd.tiddlywiki
+
+\define tmpsearchTerm() xx$:/temp/stw/searchterm
+
+Search external wikis through index tiddlers
+
+<div class="tc-search">
+<$edit-text tiddler=<<tmpsearchTerm>> tag="input" type="search" focus={{$:/config/Search/AutoFocus}}/>
+<$reveal state=<<tmpsearchTerm>> type="nomatch" text="">
+<$button class="tc-btn-invisible">
+<$action-setfield $tiddler=<<tmpsearchTerm>> $field="text" $value=""/>
+{{$:/core/images/close-button}}
+</$button>
+</$reveal>
+</div>
+
+
+<$reveal state=<<tmpsearchTerm>> type="nomatch" text="">
+<$list filter="[<tmpsearchTerm>get[text]minlength{$:/config/Search/MinLength}limit[1]]" emptyMessage="""<div class="tc-search-results">{{$:/language/Search/Search/TooShort}}</div>""" >
+<$transclude tiddler="$:/plugins/kookma/searchwikis/macros/searchresult" field="text"/>
+</$list>
+
+</$reveal>
+

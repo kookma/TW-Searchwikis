@@ -1,0 +1,8 @@
+created: 20200303160932478
+modified: 20200303162401307
+tags: $:/tags/Macro
+title: $:/plugins/kookma/searchwikis/macros/searchresult
+type: text/vnd.tiddlywiki
+
+<!-- display results -->
+<$macrocall $name="searchIndex" searchTerm={{{[<tmpsearchTerm>get[text]]}}} />

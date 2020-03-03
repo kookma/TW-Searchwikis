@@ -1,0 +1,36 @@
+created: 20200303071014382
+modified: 20200303155231839
+tags: $:/tags/Macro
+title: $:/plugins/kookma/searchwikis/macros/searchindex
+type: text/vnd.tiddlywiki
+
+\define searchIndex(searchTerm)
+\rules except wikilink
+<$list filter="[all[tiddlers+shadows]prefix[$:/stw/index/]has[stw_wiki_title]]" variable=dataTid  emptyMessage="//There is no index tiddler//">
+<$vars wikiUrl={{{ [<dataTid>get[stw_wiki_url]] }}} wikiTitle={{{ [<dataTid>get[stw_wiki_title]] }}}>
+<div style="margin-bottom:15px">
+--- Search in: <a href=<<wikiUrl>> target="_blank">''<$text text=<<wikiTitle>>/>''</a><br>
+<$list filter="[<dataTid>indexes[]]" variable=idx>
+<$list filter="[<dataTid>getindex<idx>search:title[$searchTerm$]]" variable=result>
+<$vars inTitle={{{[<result>split[|]nth[1]]}}}
+       inCaption={{{[<result>split[|]nth[2]]}}}
+  	   inTags={{{[<result>split[|]nth[3]]}}} >
+<$wikify name=targetUrl text={{{[<wikiUrl>addsuffix[#]addsuffix<idx>]}}}>             
+<a href=<<targetUrl>> target="_blank"><$text text=<<inTitle>> /></a><br>
+</$wikify>
+<div style="font-size:small;">
+<$list filter="[<inCaption>!is[blank]]" variable=ignore>
+Caption: <$text text=<<inCaption>>/>&nbsp;
+</$list>
+<$list filter="[<inTags>!is[blank]]" variable=ignore>
+Tags: <$list filter="[enlist<inTags>]" variable=tagItem>
+__<$text text=<<tagItem>> />__ </$list>
+</$list>
+</div>
+</$vars>
+</$list>
+</$list>
+</div>
+</$vars>
+</$list>
+\end
