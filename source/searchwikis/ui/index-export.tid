@@ -1,10 +1,10 @@
 created: 20200303165959003
-modified: 20200303171945481
+modified: 20200303194551113
 tags: 
 title: $:/plugins/kookma/searchwikis/ui/index-export
 type: text/vnd.tiddlywiki
 
-\define tempTidInputs()   xx$:/temp/searchwiki/input
+\define tempTidInputs()   $:/temp/searchwiki/input
 \define indexTitle()      $:/stw/index/{{$(tempTidInputs)$##wikiTitle}}
 
 \define indexvalue() $(title)$|$(caption)$|$(tags)$

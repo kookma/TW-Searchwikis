@@ -1,7 +1,13 @@
 created: 20200303065501531
-modified: 20200303190853006
+modified: 20200303195140486
 title: $:/plugins/kookma/searchwikis/history
 type: text/vnd.tiddlywiki
+
+!! Revision 1.1.0
+* Date: [3rd Mar 2020]
+* [FIXED] typo in documentation
+* [FIXED] temporary tiddlers are system tiddlers now
+* [FIXED] all global macros removed
 
 !! Revision 1.0.0
 * Date: [3rd Mar 2020]
