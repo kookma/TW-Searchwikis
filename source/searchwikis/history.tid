@@ -1,7 +1,17 @@
 created: 20200303065501531
-modified: 20200303195140486
+modified: 20200305090959915
 title: $:/plugins/kookma/searchwikis/history
 type: text/vnd.tiddlywiki
+
+!! Revision 1.2.0
+* Date: [5th Mar 2020]
+* [FIXED] issue in generate links for tiddlers with colon (:) in their title
+* [FIXED] the index and export tiddler has a user friendly title [[Index and Export]]
+* [NEW] [[Index and Export]] supports exclude filter
+* [NEW] Index summary to show tools for manupulation the indexes
+* [NEW] Indexs can be excluded temporaririly from search
+* [NEW] improved documentation and tutorial
+
 
 !! Revision 1.1.0
 * Date: [3rd Mar 2020]

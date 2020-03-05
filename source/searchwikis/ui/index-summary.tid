@@ -1,0 +1,69 @@
+created: 20200304150759980
+modified: 20200305052720822
+tags: 
+title: $:/plugins/kookma/searchwikis/ui/index-summary
+type: text/vnd.tiddlywiki
+
+\define delete-all-indexes()
+<$button popup=<<qualify "$:/state/searchwikis/filterDeleteDropdown">> class="tc-btn-invisible">
+{{$:/core/images/delete-button}}
+</$button>
+
+<$reveal state=<<qualify "$:/state/searchwikis/filterDeleteDropdown">> type="popup" position="belowleft" animate="yes">
+<div class="tc-block-dropdown-wrapper">
+<div class="tc-block-dropdown tc-edit-type-dropdown">
+<div class="tc-dropdown-item-plain">
+<$set name="resultCount" value="""<$count filter="[all[shadows+tiddlers]prefix[$:/stw/index/]tag[$:/tags/SearchWikis]]"/>""">
+Are you sure you wish to delete <<resultCount>> index tiddler(s)?
+</$set>
+</div>
+<div class="tc-dropdown-item-plain">
+<$button class="tc-btn-invisible" style="outline:none;">
+<$action-deletetiddler $filter="[all[shadows+tiddlers]prefix[$:/stw/index/]tag[$:/tags/SearchWikis]]"/>
+{{$:/core/images/delete-button}} Yes 
+</$button>&nbsp;
+<$button class="tc-btn-invisible" style="outline:none;">
+<$action-deletetiddler $tiddler="$:/state/searchwikis/filterDeleteDropdown"/>
+{{$:/core/images/close-button}} No 
+</$button>
+</div>
+</div>
+</div>
+</$reveal>
+\end
+
+\define include-exclude-index()
+<span title="Include or exclude index in Searchwikis"><$checkbox tag="$:/tags/SearchWikis"/></span>
+\end
+
+\define display-summary()
+<div class="" style="max-width:100%">
+<table style="font-size:0.9em">
+<thead>
+<tr><td style="min-width:32px">&nbsp;</td>
+<td>Title</td><td>Url</td><td>Last update</td><td>index Tiddler</td>
+<td style="min-width:32px">Delete</td></tr>
+</thead>
+<tbody>
+<$list filter="[all[shadows+tiddlers]prefix[$:/stw/index/]has[stw_wiki_title]]">
+<tr>
+<td style="text-align:center"><<include-exclude-index>></td>
+<td><$text text={{{[<currentTiddler>get[stw_wiki_title]]}}}/></td>
+<td><$text text={{{[<currentTiddler>get[stw_wiki_url]]}}}/></td>
+<td><$text text={{{[<currentTiddler>get[stw_last_update]]}}}/></td>
+<td><$link/></td>
+<td style="text-align:center">{{||$:/core/ui/Buttons/delete}}</td>
+</tr>
+</$list>
+</tbody>
+</table>
+</div>
+\end
+
+
+!! Index summary
+<<display-summary>><small>Delete all index tiddlers? <<delete-all-indexes>></small>
+
+;Index tools
+:[[index and export tool|Index and Export]] (drag and drop to external wiki, create index and export to this central wiki)
+:Change search result order by rearrange the index tiddlers <<tag $:/tags/SearchWikis>>

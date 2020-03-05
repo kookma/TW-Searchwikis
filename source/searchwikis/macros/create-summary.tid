@@ -1,0 +1,15 @@
+created: 20200304193153742
+modified: 20200304194738848
+tags: 
+title: $:/plugins/kookma/searchwikis/macros/create-summary
+type: text/vnd.tiddlywiki
+
+\define tidText() {{$:/plugins/kookma/searchwikis/ui/index-summary}}
+\define index-summary-link()
+<$button class="tc-btn-invisible tc-tiddlylink" to="Searchwikis Index Summary">external wikis
+<$list filter="[[Searchwikis Index Summary]is[missing]]">
+<$action-createtiddler $basetitle="Searchwikis Index Summary" 
+text=<<tidText>> />
+</$list>
+</$button>
+\end

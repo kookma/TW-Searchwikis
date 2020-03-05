@@ -1,14 +1,16 @@
 caption: External wikis
 created: 20200303134648969
-modified: 20200303195039290
+modified: 20200304194736630
 tags: $:/tags/AdvancedSearch
 title: $:/plugins/kookma/searchwikis/ui/advancedsearch
 type: text/vnd.tiddlywiki
 
 \import $:/plugins/kookma/searchwikis/macros/searchindex
+\import $:/plugins/kookma/searchwikis/macros/create-summary
+
 \define tmpsearchTerm() $:/temp/stw/searchterm
 
-Search external wikis through index tiddlers
+Search <<index-summary-link>> through index tiddlers
 
 <div class="tc-search">
 <$edit-text tiddler=<<tmpsearchTerm>> tag="input" type="search" focus={{$:/config/Search/AutoFocus}} default=""/>

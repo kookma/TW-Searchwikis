@@ -1,0 +1,88 @@
+created: 20200303165959003
+modified: 20200305083302623
+tags: 
+title: Index and Export
+type: text/vnd.tiddlywiki
+
+\define tempTidInputs()   $:/temp/searchwiki/input
+\define searchwikiTag()   $:/tags/SearchWikis
+\define indexTiddler()    $:/stw/index/{{{ [<tempTidInputs>getindex[wikiTitle]] ~[{$:/SiteTitle}] }}}
+
+
+\define indexvalue() $(title)$|$(caption)$|$(tags)$
+
+\define index-all-tiddlers()
+<!-- this macro will inedex all tiddlers in the wiki -->
+<$list filter="[all[tiddlers]!is[system]] $(exclude)$">
+<$vars title={{!!title}} caption={{!!caption}} tags={{!!tags}} >
+<$action-setfield $tiddler=<<indexTiddler>> $index=<<currentTiddler>> $value=<<indexvalue>>/>
+</$vars>
+</$list>
+\end
+
+\define add-wiki-info()
+<!-- add the source wiki info to index tiddler through dedicated fields -->
+<$action-setfield $tiddler=<<indexTiddler>> $field="stw_wiki_title"  $value={{{ [<tempTidInputs>getindex[wikiTitle]] ~[{$:/SiteTitle}] }}}/>
+<$action-setfield $tiddler=<<indexTiddler>> $field="stw_wiki_url"    $value={{{ [<tempTidInputs>getindex[wikiUrl]]  }}} />
+<$action-setfield $tiddler=<<indexTiddler>> $field="stw_last_update" $value=<<now "mmm DDth, YYYY 0hh:0mm:0ss">> />
+<$action-setfield $tiddler=<<indexTiddler>> tags=<<searchwikiTag>> />
+\end
+
+
+\define display-summary()
+<div class="kk-stw-indent">
+<$list filter="[all[shadows+tiddlers]prefix[$:/stw/index/]tag[$:/tags/SearchWikis]]" emptyMessage="//No index tiddler existed//">
+{{||$:/core/ui/Buttons/delete}}&nbsp;
+{{||$:/core/ui/Buttons/export-tiddler}}&nbsp;
+<$link/> <$text text={{{[<currentTiddler>get[stw_last_update]]  }}}/><br>
+</$list>
+</div>
+\end
+
+\define btn-Clear(index) 
+<$reveal state="$(tempTidInputs)$##$index$" type="nomatch" text="">
+<$button class="tc-btn-invisible kk-stw-btn">{{$:/core/images/close-button}}
+<$action-setfield $tiddler=<<tempTidInputs>> $index=<<__index__>> />
+</$button>
+</$reveal>
+\end
+
+\define index-ui()
+<label class="kk-stw-lbl">Wiki title </label>
+<$edit-text tiddler=<<tempTidInputs>> index="wikiTitle" tag=input default="" placeholder={{$:/SiteTitle}} class="kk-stw-txtbox"/>&nbsp;
+<<btn-Clear index:"wikiTitle">><br>
+
+<label class="kk-stw-lbl">Wiki url </label>
+<$edit-text tiddler=<<tempTidInputs>> index="wikiUrl" tag=input default="" placeholder="e.g. https://tiddlywiki.com" class="kk-stw-txtbox"/>&nbsp;
+<<btn-Clear index:"wikiUrl">><br>
+
+<label class="kk-stw-lbl">Exclude filter</label>
+<$edit-text tiddler=<<tempTidInputs>> index="excludeItems" tag=input default="" placeholder="e.g. -[prefix[demo]]" class="kk-stw-txtbox"/>&nbsp;
+<<btn-Clear index:"excludeItems">><br>
+
+<!-- Make index tiddler-->
+<$wikify name=indexTiddler text=<<indexTiddler>> >
+<$vars exclude={{{ [<tempTidInputs>getindex[excludeItems]] }}}>
+<span class="kk-stw-lbl"/>
+<$button>Make Index
+<$list filter="[<tempTidInputs>getindex[wikiUrl]!is[blank]]" variable=ignore>
+<<index-all-tiddlers>>
+<<add-wiki-info>>
+</$list>
+</$button>
+<<display-export-button>>
+<<display-summary>>
+</$vars>
+</$wikify>
+\end
+
+
+<style>
+.kk-stw-lbl {display:inline-block; width:85px;}
+.kk-stw-txtbox {display:inline-block; width:40ch;}
+.kk-stw-indent{padding-left:60px; margin-top:1em;font-size:small;}
+.kk-stw-btn svg{fill:#999999}
+</style>
+
+
+<<index-ui>>

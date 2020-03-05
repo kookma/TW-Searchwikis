@@ -1,23 +1,23 @@
 created: 20200303065501532
-modified: 20200303194052725
+modified: 20200305061107711
 title: $:/plugins/kookma/searchwikis/readme
 type: text/vnd.tiddlywiki
 
 !! What is Searchwikis plugin?
 <<<
-Searchwikis plugin uses index (dataTiddler) to search external Tiddlywikis. It has two parts
+Searchwikis plugin uses index (dataTiddler) to search multiple external Tiddlywikis. It has two parts
 
 # An indexer, to build an index of all tiddlers in an external wiki
-# A search tool to search indexes and display a link to external wiki
+# A search tool to search indexes and display a link to a tiddler found in an external wiki
 
-Then one central wiki can hosts many index tiddlers and lets to search several external wikis through index tiddlers.
+Then one master wiki can hosts many index tiddlers and lets to search several external wikis through index tiddlers.
 <<<
 
 
 !! How to use
 <<<
 * install $:/plugins/kookma/searchwikis into the host wiki
-* drag and drop [[index and export|$:/plugins/kookma/searchwikis/ui/index-export]] tiddler to the external wiki
+* drag and drop [[index and export|Index and Export]] tiddler to the external wiki
 * use the ui and create the index tiddler of external wiki
 * export it to the host wiki, or drag and drop to the host wiki
 * open [[$:/AdvancedSearch]] in the host wiki
@@ -42,4 +42,10 @@ Then one central wiki can hosts many index tiddlers and lets to search several e
 For complete tutorial, examples and use cases, see the demo page.
 
 //It is highly recommended to backup your data before trying any new plugin! Do it before installing Searchwikis//
+<<<
+
+!! Security note
+<<<
+* Most browsers do not allow to open a local wiki (a wiki file on disk) from a webpage! This is a security reason
+* Wikis are opened on Node.js even from local disk, are using http, or https and act as webpage
 <<<
