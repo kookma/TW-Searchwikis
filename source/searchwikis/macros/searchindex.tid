@@ -1,5 +1,5 @@
 created: 20200303071014382
-modified: 20200304184203387
+modified: 20200307062012006
 title: $:/plugins/kookma/searchwikis/macros/searchindex
 type: text/vnd.tiddlywiki
 
@@ -14,7 +14,7 @@ type: text/vnd.tiddlywiki
 <$vars inTitle={{{[<result>split[|]nth[1]]}}}
        inCaption={{{[<result>split[|]nth[2]]}}}
   	   inTags={{{[<result>split[|]nth[3]]}}} >
-<$vars idxs={{{[<idx>split[:]join[%3A]]}}}><!--replace colon(:) in title -->
+<$vars idxs={{{[<idx>split[:]join[%3A]split[#]join[%23]]}}}><!--replace colon(:) and hash(#) in title -->
 <$wikify name=targetUrl text={{{[<wikiUrl>addsuffix[#]addsuffix<idxs>]}}}>             
 <a href=<<targetUrl>> target="_blank" rel="noopener noreferrer"><$text text=<<inTitle>> /></a><br>
 </$wikify>

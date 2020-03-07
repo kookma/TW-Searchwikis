@@ -1,7 +1,12 @@
 created: 20200303065501531
-modified: 20200305090959915
+modified: 20200307063845864
 title: $:/plugins/kookma/searchwikis/history
 type: text/vnd.tiddlywiki
+
+!! Revision 1.3.0
+* Date: [5th Mar 2020]
+* [FIXED] issue in generate links for tiddlers with hash (#) in their title
+* [FIXED] documentation to add Searchwikis as sidebar segment
 
 !! Revision 1.2.0
 * Date: [5th Mar 2020]
