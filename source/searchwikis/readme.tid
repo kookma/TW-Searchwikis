@@ -1,51 +1,19 @@
-created: 20200303065501532
-modified: 20200305061107711
+created: 20200404125701939
+modified: 20200404131622364
+tags: 
 title: $:/plugins/kookma/searchwikis/readme
 type: text/vnd.tiddlywiki
 
-!! What is Searchwikis plugin?
-<<<
+; Searchwikis
 Searchwikis plugin uses index (dataTiddler) to search multiple external Tiddlywikis. It has two parts
 
 # An indexer, to build an index of all tiddlers in an external wiki
 # A search tool to search indexes and display a link to a tiddler found in an external wiki
 
 Then one master wiki can hosts many index tiddlers and lets to search several external wikis through index tiddlers.
-<<<
-
-
-!! How to use
-<<<
-* install $:/plugins/kookma/searchwikis into the host wiki
-* drag and drop [[index and export|Index and Export]] tiddler to the external wiki
-* use the ui and create the index tiddler of external wiki
-* export it to the host wiki, or drag and drop to the host wiki
-* open [[$:/AdvancedSearch]] in the host wiki
-* goto `External wiki` tab and make search
-* results will be shown as links and one can click a link and open the external wiki with that result under focus
-<<<
-
-!! Install
-<<<
-;Packaged plugin
-#Drag and drop $:/plugins/kookma/searchwikis into your wiki
-#Save and reload your wiki
-
-;Client-Server installation (separate files)
-*For Node.js (server version) download the searchwikis folder from [[source|https://github.com/kookma/TW-Searchwikis]] folder and paste in your Tiddlywiki plugins folder
-*For local installation put the searchwikis folder into your local plugins folder under your wiki folder
 
 ;Code and demo
+For learning plugin features, syntax, tutorial and examples see the plugin demo and code pages
+
 * Demo: https://kookma.github.io/TW-Searchwikis/
 * Code: https://github.com/kookma/TW-Searchwikis
-
-For complete tutorial, examples and use cases, see the demo page.
-
-//It is highly recommended to backup your data before trying any new plugin! Do it before installing Searchwikis//
-<<<
-
-!! Security note
-<<<
-* Most browsers do not allow to open a local wiki (a wiki file on disk) from a webpage! This is a security reason
-* Wikis are opened on Node.js even from local disk, are using http, or https and act as webpage
-<<<
